@@ -1,0 +1,86 @@
+---
+const stack = ["ASTRO", "THREE.JS", "WEBGL", "TYPESCRIPT", "CSS MOTION"];
+const principles = [
+  { number: "01", title: "Immersive visuals", body: "Use depth, light, and restrained motion to make digital interfaces feel spatial." },
+  { number: "02", title: "Purposeful motion", body: "Use transitions to guide attention and communicate state instead of adding noise." },
+  { number: "03", title: "Responsive by design", body: "Keep the experience clear and usable across desktop, tablet, and mobile screens." },
+  { number: "04", title: "Performance aware", body: "Treat loading, reduced-motion preferences, and fallbacks as part of the design." },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050816" />
+    <meta name="description" content="Digital Experience — an experimental web design concept using immersive visuals, motion, and interactive 3D." />
+    <title>Digital Experience — Project | Syed Wajeeh</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <nav class="topbar" aria-label="Project navigation">
+        <a class="brand" href="/#projects"><span class="brand-mark">W.</span> SYED WAJEEH</a>
+        <a class="back-link" href="/#projects">← ALL PROJECTS</a>
+      </nav>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="pulse"></span> PROJECT 03 / WEB EXPERIENCE</p>
+          <h1>DIGITAL<br /><span>EXPERIENCE.</span></h1>
+          <p class="intro">An experimental web experience concept combining immersive interface design, motion, and interactive 3D visuals.</p>
+          <div class="tags">{stack.map((item) => <span>{item}</span>)}</div>
+          <a class="primary-link" href="/#contact">DISCUSS A SIMILAR PROJECT <span>↗</span></a>
+        </div>
+        <div class="visual" aria-label="Abstract layered 3D visual composition">
+          <div class="visual-grid"></div><div class="halo halo-a"></div><div class="halo halo-b"></div>
+          <div class="glass-card card-back"><span>INTERACTION / 03</span><b>DEPTH</b></div>
+          <div class="glass-card card-front"><span>CREATIVE SYSTEMS</span><div class="sphere"></div><b>Beyond<br />the screen.</b><small>SCROLL TO EXPLORE ↘</small></div>
+          <div class="visual-label label-one">WEBGL / 60 FPS*</div><div class="visual-label label-two">LIGHT · FORM · MOTION</div>
+        </div>
+      </section>
+      <section class="content-section">
+        <div class="section-label">01 / THE IDEA</div>
+        <div><h2>Digital spaces<br /><span>with a point of view.</span></h2><p class="body-copy">This concept explores how a portfolio or product website can feel more memorable through layered composition, subtle animation, and interactive 3D elements while keeping navigation and content readable.</p><p class="note">Concept page: the visuals communicate a design direction. A live Three.js/WebGL implementation can be added as the next development step.</p></div>
+      </section>
+      <section class="capabilities-section">
+        <div class="section-label">02 / DESIGN PRINCIPLES</div>
+        <div class="capability-grid">{principles.map((item) => <article class="capability"><span>{item.number}</span><h3>{item.title}</h3><p>{item.body}</p></article>)}</div>
+      </section>
+      <section class="demo-area" id="demo">
+        <div class="section-label">03 / LIVE INTERACTIVE DEMO</div>
+        <div class="demo-head"><h2>INTERACTIVE <span>SCENE.</span></h2><p>Use the controls to change the scene's motion and lighting. This is a lightweight browser demo, not a full production WebGL app.</p></div>
+        <div class="scene-demo" id="sceneDemo"><div class="scene-grid"></div><div class="demo-orbit orbit-x"></div><div class="demo-orbit orbit-y"></div><div class="demo-sphere" id="demoSphere"></div><div class="scene-label">DIGITAL OBJECT / INTERACTIVE</div></div>
+        <div class="scene-controls"><button type="button" id="motionToggle" aria-pressed="false">PAUSE MOTION</button><button type="button" id="lightToggle" aria-pressed="false">CHANGE LIGHTING</button></div>
+        <div class="repo-actions"><a class="demo-button" href="https://github.com/YOUR-GITHUB-USERNAME/digital-experience" target="_blank" rel="noreferrer">GITHUB REPOSITORY ↗</a><span>Replace the placeholder URL with your real repository.</span></div>
+      </section>
+      <script>
+        const scene = document.querySelector<HTMLElement>("#sceneDemo");
+        const motionToggle = document.querySelector<HTMLButtonElement>("#motionToggle");
+        const lightToggle = document.querySelector<HTMLButtonElement>("#lightToggle");
+        motionToggle?.addEventListener("click", () => {
+          const paused = motionToggle.getAttribute("aria-pressed") !== "true";
+          motionToggle.setAttribute("aria-pressed", String(paused));
+          motionToggle.textContent = paused ? "RESUME MOTION" : "PAUSE MOTION";
+          scene?.classList.toggle("motion-paused", paused);
+        });
+        lightToggle?.addEventListener("click", () => {
+          const changed = lightToggle.getAttribute("aria-pressed") !== "true";
+          lightToggle.setAttribute("aria-pressed", String(changed));
+          scene?.classList.toggle("alternate-light", changed);
+        });
+      </script>
+      <section class="content-section stack-section">
+        <div class="section-label">03 / EXPERIENCE LAYERS</div>
+        <div><h2>Designed as<br /><span>a living interface.</span></h2><div class="architecture"><div>CONTENT LAYER <small>Typography · hierarchy · navigation</small></div><i>↓</i><div>MOTION LAYER <small>Transitions · scroll cues · feedback</small></div><i>↓</i><div>3D LAYER <small>Three.js / WebGL scene · lighting · depth</small></div></div></div>
+      </section>
+      <footer class="footer"><a href="/#projects">← RETURN TO PROJECTS</a><span>AI × SOFTWARE × WEB</span><a href="/#contact">LET'S CONNECT ↗</a></footer>
+    </main>
+  </body>
+</html>
+<style>
+:global(*){box-sizing:border-box} :global(html){scroll-behavior:smooth;background:#050816} :global(body){margin:0;background:#050816;color:#eaf0ff;font-family:Arial,Helvetica,sans-serif} :global(a){color:inherit;text-decoration:none}.page-shell{max-width:1440px;margin:auto;padding:0 6vw;background:radial-gradient(ellipse at 76% 18%,rgba(57,77,190,.15),transparent 36%),#050816;min-height:100vh}.topbar{height:86px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);font:10px monospace;letter-spacing:.14em}.brand{display:flex;align-items:center;gap:12px}.brand-mark{display:grid;place-items:center;width:30px;height:30px;border:1px solid #22d3ee;color:#22d3ee;font-weight:bold}.back-link,.footer a{color:#9aa6c4;transition:color .2s}.back-link:hover,.footer a:hover{color:#22d3ee}.hero{min-height:640px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;padding:70px 0 90px}.eyebrow,.section-label{color:#22d3ee;font:10px monospace;letter-spacing:.18em}.pulse{display:inline-block;width:6px;height:6px;background:#22d3ee;border-radius:50%;margin-right:8px;box-shadow:0 0 12px #22d3ee}.hero h1{font-size:clamp(68px,9vw,120px);line-height:.8;letter-spacing:-.085em;margin:34px 0;overflow-wrap:anywhere}.hero h1 span,h2 span{color:#526df4}.intro,.body-copy{max-width:520px;color:#929db8;font-size:15px;line-height:1.9}.tags{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0}.tags span{border:1px solid rgba(150,170,230,.18);background:rgba(255,255,255,.025);padding:9px 11px;color:#a5b1ce;font:9px monospace;letter-spacing:.08em}.primary-link{display:inline-flex;gap:28px;align-items:center;margin-top:15px;padding:16px 18px;border:1px solid rgba(34,211,238,.35);font:10px monospace;letter-spacing:.12em;transition:background .2s}.primary-link:hover{background:rgba(34,211,238,.08)}.primary-link span{font-size:17px}.visual{height:430px;position:relative;display:grid;place-items:center;isolation:isolate;perspective:900px}.visual-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(80,110,210,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(80,110,210,.07) 1px,transparent 1px);background-size:35px 35px;mask-image:radial-gradient(ellipse,black,transparent 72%);z-index:-2}.halo{position:absolute;border:1px solid rgba(80,120,255,.32);border-radius:50%;aspect-ratio:1}.halo-a{width:310px;transform:rotateX(68deg) rotate(-24deg)}.halo-b{width:370px;transform:rotateX(68deg) rotate(30deg);border-color:rgba(34,211,238,.18)}.glass-card{position:absolute;width:230px;height:280px;border:1px solid rgba(130,155,255,.32);background:linear-gradient(145deg,rgba(31,43,87,.82),rgba(8,13,32,.76));box-shadow:0 30px 80px rgba(0,0,0,.3);backdrop-filter:blur(8px);padding:18px;display:flex;flex-direction:column}.glass-card span,.glass-card small{font:8px monospace;letter-spacing:.12em;color:#95a4cc}.glass-card b{font-size:26px;letter-spacing:-.06em}.card-back{transform:translate(65px,-22px) rotate(9deg);opacity:.65;justify-content:space-between}.card-front{transform:translate(-35px,15px) rotate(-5deg);justify-content:space-between}.card-front b{font-size:28px;line-height:.95}.sphere{align-self:center;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 32% 25%,#e5f6ff 0,#71a9ff 12%,#5961d7 35%,#171b50 68%,#080d24 75%);box-shadow:0 0 45px rgba(91,118,255,.38),inset -10px -12px 20px rgba(0,0,0,.55);animation:float 6s ease-in-out infinite}.visual-label{position:absolute;font:8px monospace;letter-spacing:.13em;color:#63739c}.label-one{top:30px;left:0}.label-two{bottom:25px;right:0}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}.content-section{display:grid;grid-template-columns:.7fr 1.3fr;gap:45px;padding:85px 0;border-top:1px solid rgba(255,255,255,.08)}h2{font-size:clamp(36px,5vw,65px);letter-spacing:-.06em;line-height:.98;margin:0 0 25px}.note{margin-top:25px;padding-left:14px;border-left:2px solid #526df4;color:#697795;font-size:12px;line-height:1.8}.capabilities-section{padding:80px 0;border-top:1px solid rgba(255,255,255,.08)}.capability-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:35px}.capability{min-height:210px;padding:22px;border:1px solid rgba(130,150,210,.15);background:rgba(255,255,255,.02)}.capability>span{font:10px monospace;color:#22d3ee}.capability h3{margin:34px 0 12px;font-size:18px;letter-spacing:-.03em}.capability p{color:#8995b0;font-size:12px;line-height:1.8}.architecture{display:grid;justify-items:center;gap:10px;margin-top:28px}.architecture div{width:min(100%,460px);padding:18px;border:1px solid rgba(90,120,220,.3);background:rgba(255,255,255,.025);font:10px monospace;letter-spacing:.1em}.architecture small{display:block;margin-top:7px;color:#7d8aa8;font:11px Arial}.architecture i{font-style:normal;color:#22d3ee}.footer{min-height:90px;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;gap:18px;font:9px monospace;letter-spacing:.1em;color:#6f7b98}.footer a{color:#9aa6c4}.footer span{color:#53617e}@media(max-width:800px){.hero{grid-template-columns:1fr;padding:60px 0}.visual{height:370px}.content-section{grid-template-columns:1fr;gap:25px}.capability-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:480px){.page-shell{padding:0 20px}.topbar{height:72px}.topbar,.footer{font-size:8px}.hero h1{font-size:64px}.visual{transform:scale(.88);margin:0 -25px}.capability-grid{grid-template-columns:1fr}.capability{min-height:160px}.footer{flex-wrap:wrap;padding:22px 0}}
+@media(prefers-reduced-motion:reduce){:global(html){scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+
+<style>
+.demo-area{padding:80px 0;border-top:1px solid rgba(255,255,255,.08)}.demo-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin:25px 0}.demo-head h2 span{color:#526df4}.demo-head p{max-width:390px;color:#929db8;font-size:13px;line-height:1.8}.scene-demo{height:360px;position:relative;overflow:hidden;display:grid;place-items:center;border:1px solid rgba(100,130,220,.22);background:radial-gradient(ellipse at center,rgba(41,56,130,.35),transparent 58%),#070b1a;perspective:800px}.scene-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(80,110,210,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(80,110,210,.08) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse,black,transparent 72%)}.demo-orbit{position:absolute;border:1px solid rgba(90,130,255,.42);border-radius:50%;width:230px;height:230px}.orbit-x{transform:rotateX(66deg) rotate(-25deg);animation:demoOrbit 12s linear infinite}.orbit-y{width:290px;height:290px;transform:rotateX(66deg) rotate(35deg);border-color:rgba(34,211,238,.3);animation:demoOrbit 17s linear infinite reverse}.demo-sphere{position:relative;width:125px;height:125px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#e7f9ff 0,#83bdff 12%,#5961d7 34%,#171b50 68%,#080d24 76%);box-shadow:0 0 60px rgba(91,118,255,.45),inset -12px -15px 22px rgba(0,0,0,.6);animation:demoFloat 5s ease-in-out infinite}.scene-label{position:absolute;bottom:18px;left:20px;color:#7080a6;font:9px monospace;letter-spacing:.15em}.scene-demo.motion-paused *{animation-play-state:paused!important}.scene-demo.alternate-light{background:radial-gradient(ellipse at 55% 45%,rgba(12,175,185,.28),transparent 60%),#070b1a}.scene-demo.alternate-light .demo-sphere{background:radial-gradient(circle at 30% 25%,#f0ffff 0,#70f0e0 12%,#2a8cb9 34%,#132e56 68%,#060d24 76%);box-shadow:0 0 65px rgba(34,211,238,.5),inset -12px -15px 22px rgba(0,0,0,.6)}.scene-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.scene-controls button{padding:12px 15px;border:1px solid rgba(34,211,238,.35);background:rgba(34,211,238,.06);color:#c8faff;font:9px monospace;letter-spacing:.1em;cursor:pointer}.scene-controls button[aria-pressed="true"]{background:rgba(82,109,244,.15);border-color:#526df4}.repo-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px}.repo-actions span{font-size:11px;color:#697795}.demo-button{display:inline-block;text-decoration:none;border:1px solid rgba(34,211,238,.45);background:rgba(34,211,238,.08);color:#dffaff;padding:13px 16px;font:10px monospace;letter-spacing:.1em}@keyframes demoOrbit{to{rotate:360deg}}@keyframes demoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}@media(max-width:650px){.demo-head{display:block}.scene-demo{height:300px}}
+</style>

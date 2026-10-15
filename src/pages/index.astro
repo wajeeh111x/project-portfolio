@@ -1,11 +1,81 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Hero from "../components/Hero.astro";
+import Projects from "../components/Projects.astro";
+import About from "../components/About.astro";
+import Contact from "../components/Contact.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>
+    AI / Software / Digital — Portfolio
+  </title>
+
+  <meta
+    name="description"
+    content="AI systems, software products and immersive digital experiences."
+  />
+</head>
+
+<body>
+
+  <main>
+
+    <!-- HERO -->
+    <Hero />
+
+    <!-- PROJECTS -->
+    <Projects />
+
+    <!-- ABOUT -->
+    <About />
+
+    <!-- CONTACT -->
+    <Contact />
+
+  </main>
+
+</body>
+
+</html>
+
+<style>
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    margin: 0;
+    padding: 0;
+    background: #050505;
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    background: #050505;
+    color: white;
+    font-family:
+      Arial,
+      Helvetica,
+      sans-serif;
+  }
+
+  :global(main) {
+    width: 100%;
+    overflow: visible;
+  }
+
+</style>

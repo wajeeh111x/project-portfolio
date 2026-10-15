@@ -1,0 +1,399 @@
+<section class="contact" id="contact">
+
+  <div class="contact-grid">
+
+    <div class="contact-intro">
+      <span class="eyebrow">04 / COMMUNICATION CHANNEL</span>
+
+      <h2>
+        LET'S BUILD<br />
+        <span>SOMETHING.</span>
+      </h2>
+
+      <p>
+        Have an idea, product or system that needs to be built?
+        Send me the details and let's turn the concept into something real.
+      </p>
+
+      <div class="contact-status">
+        <span class="status-dot"></span>
+        AVAILABLE FOR SELECT PROJECTS
+      </div>
+    </div>
+
+
+    <form class="contact-form">
+
+      <div class="field">
+        <label for="name">01 / NAME</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="YOUR NAME"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="email">02 / EMAIL</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="YOUR@EMAIL.COM"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="project">03 / PROJECT TYPE</label>
+
+        <select id="project" name="project">
+          <option>AI / MACHINE LEARNING</option>
+          <option>SOFTWARE DEVELOPMENT</option>
+          <option>WEB EXPERIENCE</option>
+          <option>AUTOMATION</option>
+          <option>OTHER</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">04 / MESSAGE</label>
+
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          placeholder="TELL ME ABOUT YOUR PROJECT..."
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit">
+        <span>SEND TRANSMISSION</span>
+        <span>↗</span>
+      </button>
+
+    </form>
+
+  </div>
+
+
+  <footer class="contact-footer">
+
+    <div>
+      <span>SYED WAJEEH</span>
+      <small>AI / SOFTWARE / DIGITAL</small>
+    </div>
+
+    <div>
+      <span>PAKISTAN</span>
+      <small>AVAILABLE WORLDWIDE</small>
+    </div>
+
+    <div>
+      <span>© 2026</span>
+      <small>ALL SYSTEMS OPERATIONAL</small>
+    </div>
+
+  </footer>
+
+</section>
+
+
+<style>
+
+  .contact {
+    position: relative;
+    padding: 150px 40px 30px;
+    background: #03050d;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+
+  .contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+      linear-gradient(
+        rgba(59,130,246,.045) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(59,130,246,.045) 1px,
+        transparent 1px
+      );
+
+    background-size: 70px 70px;
+
+    mask-image:
+      radial-gradient(
+        ellipse at center,
+        black,
+        transparent 75%
+      );
+
+    pointer-events: none;
+  }
+
+
+  .contact-grid {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1400px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+  }
+
+
+  .eyebrow {
+    color: #22d3ee;
+    font: 8px monospace;
+    letter-spacing: .2em;
+  }
+
+
+  .contact-intro h2 {
+    margin: 25px 0;
+
+    color: #eaf2ff;
+
+    font-size: clamp(55px, 8vw, 110px);
+    line-height: .84;
+
+    letter-spacing: -.065em;
+  }
+
+
+  .contact-intro h2 span {
+    color: #3b82f6;
+  }
+
+
+  .contact-intro p {
+    max-width: 430px;
+
+    color: #71809d;
+
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+
+  .contact-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 45px;
+
+    color: #71809d;
+
+    font: 8px monospace;
+    letter-spacing: .12em;
+  }
+
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #22d3ee;
+
+    box-shadow: 0 0 15px #22d3ee;
+  }
+
+
+  /* FORM */
+
+  .contact-form {
+    border-top: 1px solid rgba(255,255,255,.1);
+  }
+
+
+  .field {
+    padding: 22px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+
+  .field label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #3b82f6;
+
+    font: 8px monospace;
+    letter-spacing: .15em;
+  }
+
+
+  .field input,
+  .field select,
+  .field textarea {
+
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #eaf2ff;
+
+    font-family: monospace;
+    font-size: 12px;
+
+    resize: vertical;
+  }
+
+
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: #39445e;
+  }
+
+
+  .field select {
+    appearance: none;
+    cursor: pointer;
+  }
+
+
+  .field select option {
+    background: #080c1b;
+    color: white;
+  }
+
+
+  .contact-form button {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 25px;
+    padding: 18px 20px;
+
+    border: none;
+
+    background: #22d3ee;
+    color: #03050d;
+
+    font: 700 9px monospace;
+    letter-spacing: .15em;
+
+    cursor: pointer;
+
+    transition:
+      transform .3s ease,
+      box-shadow .3s ease;
+  }
+
+
+  .contact-form button span:last-child {
+    font-size: 16px;
+  }
+
+
+  .contact-form button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+      0 0 40px rgba(34,211,238,.25);
+  }
+
+
+  /* FOOTER */
+
+  .contact-footer {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1400px;
+    margin: 130px auto 0;
+
+    padding-top: 25px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+
+
+  .contact-footer div {
+    padding: 20px;
+
+    border-right: 1px solid rgba(255,255,255,.06);
+  }
+
+
+  .contact-footer span {
+    display: block;
+
+    color: #dce6fa;
+
+    font: 9px monospace;
+    letter-spacing: .12em;
+  }
+
+
+  .contact-footer small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #46536f;
+
+    font: 7px monospace;
+    letter-spacing: .1em;
+  }
+
+
+  @media (max-width: 850px) {
+
+    .contact {
+      padding: 100px 25px 25px;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 70px;
+    }
+
+    .contact-footer {
+      grid-template-columns: 1fr;
+      margin-top: 80px;
+    }
+
+  }
+
+
+  @media (max-width: 500px) {
+
+    .contact {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .contact-intro h2 {
+      font-size: 58px;
+    }
+
+  }
+
+</style>

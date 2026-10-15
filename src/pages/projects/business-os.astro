@@ -1,0 +1,93 @@
+---
+const stack = ["REACT", "NODE.JS", "REST API", "DATABASE", "AI AGENTS"];
+const capabilities = [
+  { number: "01", title: "Workflow automation", body: "Map repetitive business tasks into clear, repeatable workflows." },
+  { number: "02", title: "AI-assisted operations", body: "Plan a place for AI agents to help with summaries, routing, and routine decisions." },
+  { number: "03", title: "Centralized dashboard", body: "Bring task status, activity, and operational signals into one interface." },
+  { number: "04", title: "Connected data", body: "Design integration points for business records, services, and reporting." },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050816" />
+    <meta name="description" content="Business OS — a concept for a centralized business operations platform with workflow automation and AI agents." />
+    <title>Business OS — Project | Syed Wajeeh</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <nav class="topbar" aria-label="Project navigation">
+        <a class="brand" href="/#projects"><span class="brand-mark">W.</span> SYED WAJEEH</a>
+        <a class="back-link" href="/#projects">← ALL PROJECTS</a>
+      </nav>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="pulse"></span> PROJECT 02 / SOFTWARE & AUTOMATION</p>
+          <h1>BUSINESS<br /><span>OS.</span></h1>
+          <p class="intro">A centralized digital workspace concept for connecting business workflows, operational data, and intelligent automation.</p>
+          <div class="tags">{stack.map((item) => <span>{item}</span>)}</div>
+          <a class="primary-link" href="/#contact">DISCUSS A SIMILAR PROJECT <span>↗</span></a>
+        </div>
+        <div class="visual" aria-label="Abstract business workflow visualization">
+          <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+          <div class="node node-a">TASKS <b>84%</b></div>
+          <div class="node node-b">AUTOMATION <b>ONLINE</b></div>
+          <div class="node node-c">AI AGENT <b>READY</b></div>
+          <div class="hub"><span>BUSINESS</span><strong>OS</strong><small>CONTROL LAYER</small></div>
+          <div class="visual-caption">WORKFLOW NETWORK / 02</div>
+        </div>
+      </section>
+      <section class="content-section">
+        <div class="section-label">01 / OVERVIEW</div>
+        <div><h2>Less manual work.<br /><span>More visibility.</span></h2><p class="body-copy">Business OS is a proposed operations platform that brings recurring tasks, team workflows, and AI-assisted tools into a single workspace. The goal is to make work easier to track and reduce the need to switch between disconnected tools.</p><p class="note">Portfolio concept: this page describes the intended product direction, not a claim that a production platform is already deployed.</p></div>
+      </section>
+      <section class="capabilities-section">
+        <div class="section-label">02 / CORE MODULES</div>
+        <div class="capability-grid">{capabilities.map((item) => <article class="capability"><span>{item.number}</span><h3>{item.title}</h3><p>{item.body}</p></article>)}</div>
+      </section>
+      <section class="demo-area" id="demo">
+        <div class="section-label">03 / LIVE INTERACTIVE DEMO</div>
+        <div class="demo-head"><h2>OPERATIONS <span>CONSOLE.</span></h2><p>Try the sample task controls. This local prototype changes task status in your browser; it is not connected to a real database.</p></div>
+        <div class="dashboard-demo">
+          <div class="dashboard-top"><span>WORKSPACE / OVERVIEW</span><span class="demo-live"><i></i> DEMO MODE</span></div>
+          <div class="metrics"><div><small>OPEN TASKS</small><strong id="openCount">03</strong></div><div><small>COMPLETED</small><strong id="doneCount">01</strong></div><div><small>AUTOMATIONS</small><strong>08</strong></div></div>
+          <div class="task-list">
+            <div class="task-row"><div><span class="task-id">TASK-014</span><strong>Prepare weekly report</strong></div><button class="task-toggle" type="button" aria-pressed="false">MARK DONE</button></div>
+            <div class="task-row"><div><span class="task-id">TASK-015</span><strong>Review new customer leads</strong></div><button class="task-toggle" type="button" aria-pressed="false">MARK DONE</button></div>
+            <div class="task-row"><div><span class="task-id">TASK-016</span><strong>Send project status update</strong></div><button class="task-toggle" type="button" aria-pressed="false">MARK DONE</button></div>
+          </div>
+        </div>
+        <div class="repo-actions"><a class="demo-button" href="https://github.com/YOUR-GITHUB-USERNAME/business-os" target="_blank" rel="noreferrer">GITHUB REPOSITORY ↗</a><span>Replace the placeholder URL with your real repository.</span></div>
+      </section>
+      <script>
+        const taskButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".task-toggle"));
+        const openCount = document.querySelector<HTMLElement>("#openCount");
+        const doneCount = document.querySelector<HTMLElement>("#doneCount");
+        taskButtons.forEach((button) => button.addEventListener("click", () => {
+          const done = button.getAttribute("aria-pressed") !== "true";
+          button.setAttribute("aria-pressed", String(done));
+          button.textContent = done ? "COMPLETED ✓" : "MARK DONE";
+          button.closest(".task-row")?.classList.toggle("is-done", done);
+          const completed = taskButtons.filter((item) => item.getAttribute("aria-pressed") === "true").length;
+          if (openCount) openCount.textContent = String(3 - completed).padStart(2, "0");
+          if (doneCount) doneCount.textContent = String(1 + completed).padStart(2, "0");
+        }));
+      </script>
+      <section class="content-section stack-section">
+        <div class="section-label">03 / SYSTEM DESIGN</div>
+        <div><h2>One interface.<br /><span>Connected services.</span></h2><div class="architecture"><div>USER INTERFACE <small>React dashboard</small></div><i>↓</i><div>APPLICATION API <small>Node.js services</small></div><i>↓</i><div>DATA + AUTOMATION <small>Database · integrations · agent tools</small></div></div></div>
+      </section>
+      <footer class="footer"><a href="/#projects">← RETURN TO PROJECTS</a><span>AI × SOFTWARE × WEB</span><a href="/#contact">LET'S CONNECT ↗</a></footer>
+    </main>
+  </body>
+</html>
+<style>
+:global(*){box-sizing:border-box} :global(html){scroll-behavior:smooth;background:#050816} :global(body){margin:0;background:#050816;color:#eaf0ff;font-family:Arial,Helvetica,sans-serif} :global(a){color:inherit;text-decoration:none}.page-shell{max-width:1440px;margin:auto;padding:0 6vw;background:radial-gradient(ellipse at 76% 18%,rgba(57,77,190,.15),transparent 36%),#050816;min-height:100vh}.topbar{height:86px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08);font:10px monospace;letter-spacing:.14em}.brand{display:flex;align-items:center;gap:12px}.brand-mark{display:grid;place-items:center;width:30px;height:30px;border:1px solid #22d3ee;color:#22d3ee;font-weight:bold}.back-link,.footer a{color:#9aa6c4;transition:color .2s}.back-link:hover,.footer a:hover{color:#22d3ee}.hero{min-height:640px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;padding:70px 0 90px}.eyebrow,.section-label{color:#22d3ee;font:10px monospace;letter-spacing:.18em}.pulse{display:inline-block;width:6px;height:6px;background:#22d3ee;border-radius:50%;margin-right:8px;box-shadow:0 0 12px #22d3ee}.hero h1{font-size:clamp(68px,10vw,136px);line-height:.78;letter-spacing:-.085em;margin:34px 0}.hero h1 span,h2 span{color:#526df4}.intro,.body-copy{max-width:520px;color:#929db8;font-size:15px;line-height:1.9}.tags{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0}.tags span{border:1px solid rgba(150,170,230,.18);background:rgba(255,255,255,.025);padding:9px 11px;color:#a5b1ce;font:9px monospace;letter-spacing:.08em}.primary-link{display:inline-flex;gap:28px;align-items:center;margin-top:15px;padding:16px 18px;border:1px solid rgba(34,211,238,.35);font:10px monospace;letter-spacing:.12em;transition:background .2s}.primary-link:hover{background:rgba(34,211,238,.08)}.primary-link span{font-size:17px}.visual{height:430px;position:relative;display:grid;place-items:center;isolation:isolate}.visual:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(80,110,210,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(80,110,210,.07) 1px,transparent 1px);background-size:35px 35px;mask-image:radial-gradient(ellipse,black,transparent 72%);z-index:-2}.orbit{position:absolute;border:1px solid rgba(90,120,245,.3);border-radius:50%;aspect-ratio:1}.orbit-a{width:270px;transform:rotateX(63deg) rotate(-20deg)}.orbit-b{width:350px;transform:rotateX(63deg) rotate(38deg);border-color:rgba(34,211,238,.2)}.hub{width:150px;height:150px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 25%,#293b83,#10162e 62%,#070b1b);border:1px solid rgba(100,140,255,.55);box-shadow:0 0 65px rgba(73,91,245,.28),inset 0 0 30px rgba(50,80,220,.25)}.hub span,.hub small{font:8px monospace;letter-spacing:.18em;color:#98a6d2}.hub strong{font-size:48px;letter-spacing:-.08em}.hub small{margin-top:4px}.node{position:absolute;min-width:130px;padding:12px;background:rgba(8,14,34,.94);border:1px solid rgba(85,110,210,.4);font:8px monospace;letter-spacing:.1em;color:#94a3c7;box-shadow:0 12px 35px #02040c}.node b{display:block;color:#22d3ee;margin-top:8px;font-weight:400}.node-a{top:50px;left:8px}.node-b{top:100px;right:0}.node-c{bottom:55px;left:20%}.visual-caption{position:absolute;bottom:0;right:0;font:8px monospace;letter-spacing:.18em;color:#58678c}.content-section{display:grid;grid-template-columns:.7fr 1.3fr;gap:45px;padding:85px 0;border-top:1px solid rgba(255,255,255,.08)}h2{font-size:clamp(36px,5vw,65px);letter-spacing:-.06em;line-height:.98;margin:0 0 25px}.note{margin-top:25px;padding-left:14px;border-left:2px solid #526df4;color:#697795;font-size:12px;line-height:1.8}.capabilities-section{padding:80px 0;border-top:1px solid rgba(255,255,255,.08)}.capability-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:35px}.capability{min-height:210px;padding:22px;border:1px solid rgba(130,150,210,.15);background:rgba(255,255,255,.02)}.capability>span{font:10px monospace;color:#22d3ee}.capability h3{margin:34px 0 12px;font-size:18px;letter-spacing:-.03em}.capability p{color:#8995b0;font-size:12px;line-height:1.8}.architecture{display:grid;justify-items:center;gap:10px;margin-top:28px}.architecture div{width:min(100%,460px);padding:18px;border:1px solid rgba(90,120,220,.3);background:rgba(255,255,255,.025);font:10px monospace;letter-spacing:.1em}.architecture small{display:block;margin-top:7px;color:#7d8aa8;font:11px Arial}.architecture i{font-style:normal;color:#22d3ee}.footer{min-height:90px;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;gap:18px;font:9px monospace;letter-spacing:.1em;color:#6f7b98}.footer span{color:#53617e}@media(max-width:800px){.hero{grid-template-columns:1fr;padding:60px 0}.visual{height:370px}.content-section{grid-template-columns:1fr;gap:25px}.capability-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:480px){.page-shell{padding:0 20px}.topbar{height:72px}.topbar,.footer{font-size:8px}.hero h1{font-size:76px}.visual{transform:scale(.88);margin:0 -25px}.capability-grid{grid-template-columns:1fr}.capability{min-height:160px}.footer{flex-wrap:wrap;padding:22px 0}}
+@media(prefers-reduced-motion:reduce){:global(html){scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+
+<style>
+.demo-area{padding:80px 0;border-top:1px solid rgba(255,255,255,.08)}.demo-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin:25px 0}.demo-head h2{max-width:540px}.demo-head h2 span{color:#526df4}.demo-head p{max-width:390px;color:#929db8;font-size:13px;line-height:1.8}.dashboard-demo{max-width:900px;border:1px solid rgba(100,130,220,.25);background:rgba(7,12,28,.86)}.dashboard-top{display:flex;justify-content:space-between;gap:15px;padding:17px 20px;border-bottom:1px solid rgba(255,255,255,.08);font:9px monospace;letter-spacing:.12em;color:#9ba8c8}.demo-live{color:#22d3ee}.demo-live i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#22d3ee;margin-right:7px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:18px}.metrics>div{padding:17px;border:1px solid rgba(130,150,210,.15);background:rgba(255,255,255,.025)}.metrics small{display:block;color:#7785a6;font:9px monospace;letter-spacing:.1em}.metrics strong{display:block;color:#eaf0ff;font-size:30px;margin-top:10px}.task-list{padding:0 18px 18px}.task-row{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:17px 4px;border-top:1px solid rgba(255,255,255,.07)}.task-row>div{display:flex;flex-direction:column;gap:7px}.task-id{font:9px monospace;color:#22d3ee}.task-row strong{font-size:13px;font-weight:500;color:#dce5ff}.task-toggle{background:transparent;border:1px solid rgba(34,211,238,.3);color:#b9f7ff;padding:10px 12px;font:9px monospace;cursor:pointer;white-space:nowrap}.task-toggle[aria-pressed="true"]{border-color:rgba(90,220,160,.4);color:#7df0b3}.task-row.is-done strong{text-decoration:line-through;color:#687592}.repo-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px}.repo-actions span{font-size:11px;color:#697795}.demo-button{display:inline-block;text-decoration:none;border:1px solid rgba(34,211,238,.45);background:rgba(34,211,238,.08);color:#dffaff;padding:13px 16px;font:10px monospace;letter-spacing:.1em}@media(max-width:650px){.demo-head{display:block}.dashboard-top{font-size:8px}.metrics{padding:10px;gap:7px}.metrics>div{padding:12px}.metrics strong{font-size:24px}.task-row{align-items:flex-start}.task-row strong{max-width:190px}.task-toggle{font-size:8px;padding:9px 7px}}
+</style>
