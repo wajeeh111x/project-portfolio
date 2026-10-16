@@ -1,0 +1,157 @@
+---
+const commands = ['help', 'about', 'skills', 'projects', 'contact', 'clear'];
+---
+
+<section class="terminal-section" id="terminal" aria-labelledby="terminal-title">
+  <div class="terminal-intro">
+    <span class="eyebrow">INTERACTIVE / EXPLORE</span>
+    <h2 id="terminal-title">A different way<br />to <span>look around.</span></h2>
+    <p>Meet the builder behind the systems. Type a command or choose one below.</p>
+  </div>
+  <portfolio-terminal>
+    <div class="terminal-bar">
+      <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>wajeeh / portfolio</span>
+      <span class="terminal-status">READY</span>
+    </div>
+    <div class="terminal-output" role="log" aria-label="Terminal output" aria-live="polite" aria-relevant="additions" tabindex="0" data-lenis-prevent>
+      <p>Welcome to my corner of the web.</p>
+      <p>Type help to see what you can explore.</p>
+    </div>
+    <form class="terminal-form" autocomplete="off" hidden>
+      <label for="terminal-command"><span aria-hidden="true">visitor ~ $</span><span class="sr-only">Terminal command</span></label>
+      <input id="terminal-command" name="command" type="text" maxlength="120" placeholder="try help" spellcheck="false" autocapitalize="off" aria-describedby="terminal-hint" />
+      <button type="submit" aria-label="Run command">↵</button>
+    </form>
+    <div class="terminal-shortcuts" aria-label="Quick commands" hidden>
+      {commands.map(command => <button type="button" data-command={command}>{command}</button>)}
+    </div>
+    <p class="terminal-hint" id="terminal-hint" hidden>Enter to run · ↑ ↓ for history · commands stay in your browser</p>
+    <noscript><p class="fallback">Enable JavaScript to use the terminal, or explore <a href="#projects">projects</a> and <a href="#about">about me</a>.</p></noscript>
+  </portfolio-terminal>
+</section>
+
+<script>
+  class PortfolioTerminal extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready) return;
+      this.dataset.ready = 'true';
+      const output = this.querySelector<HTMLElement>('.terminal-output')!;
+      const form = this.querySelector<HTMLFormElement>('form')!;
+      const input = this.querySelector<HTMLInputElement>('input')!;
+      this.querySelectorAll<HTMLElement>('[hidden]').forEach(element => element.hidden = false);
+      const history: string[] = [];
+      let cursor = 0;
+      let draft = '';
+      const line = (parent: HTMLElement, text: string) => {
+        const p = document.createElement('p');
+        p.textContent = text;
+        parent.append(p);
+      };
+      const link = (parent: HTMLElement, title: string, href: string) => {
+        const p = document.createElement('p');
+        const a = document.createElement('a');
+        a.textContent = `${title} ↗`;
+        a.href = href;
+        p.append(a);
+        parent.append(p);
+      };
+      const run = (raw: string) => {
+        const command = raw.trim();
+        if (!command) return;
+        history.push(command);
+        if (history.length > 50) history.shift();
+        cursor = history.length;
+        draft = '';
+        input.value = '';
+        const entry = document.createElement('div');
+        entry.className = 'terminal-entry';
+        line(entry, `visitor ~ $ ${command}`);
+        switch (command.toLowerCase()) {
+          case 'help':
+            line(entry, 'about — Meet the builder\nskills — Explore my toolkit\nprojects — Browse selected work\ncontact — Start a conversation\nclear — Reset the screen');
+            break;
+          case 'about':
+            line(entry, 'I’m Syed Wajeeh. I design and engineer AI systems, software products and immersive digital experiences. Based in Pakistan, available worldwide.');
+            link(entry, 'Read my profile', '#about');
+            break;
+          case 'skills':
+            line(entry, 'AI / BACKEND   Python · FastAPI · OpenAI\nWEB / SOFTWARE   JavaScript · TypeScript · React · Astro\nDIGITAL   Three.js · 3D interfaces · Motion');
+            link(entry, 'Explore capabilities', '#about');
+            break;
+          case 'projects':
+            link(entry, '01 / AI Chatbot — Conversational AI', '/projects/ai-chatbot');
+            link(entry, '02 / Business OS — Workflows & automation', '/projects/business-os');
+            link(entry, '03 / Digital Experience — Immersive interfaces', '/projects/digital-experience');
+            break;
+          case 'contact':
+            line(entry, 'Have an idea for an AI system, software product or web experience? Let’s connect.');
+            link(entry, 'Go to the contact section', '#contact');
+            break;
+          case 'clear':
+            output.replaceChildren();
+            entry.replaceChildren();
+            line(entry, 'Screen cleared. Type help to start again.');
+            break;
+          default:
+            line(entry, `Unknown command: ${command}. Type help or select a command below.`);
+        }
+        output.append(entry);
+        while (output.childElementCount > 50) output.firstElementChild?.remove();
+        output.scrollTop = output.scrollHeight;
+      };
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        run(input.value);
+      });
+      this.querySelectorAll<HTMLButtonElement>('[data-command]').forEach(button => {
+        button.addEventListener('click', () => run(button.dataset.command!));
+      });
+      input.addEventListener('keydown', event => {
+        if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return;
+        if (!history.length) return;
+        event.preventDefault();
+        if (cursor === history.length) draft = input.value;
+        cursor = event.key === 'ArrowUp' ? Math.max(0, cursor - 1) : Math.min(history.length, cursor + 1);
+        input.value = cursor === history.length ? draft : history[cursor];
+        input.setSelectionRange(input.value.length, input.value.length);
+      });
+    }
+  }
+  if (!customElements.get('portfolio-terminal')) customElements.define('portfolio-terminal', PortfolioTerminal);
+</script>
+
+<style>
+  .terminal-section { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: clamp(30px, 6vw, 90px); padding: 90px 6vw; background: #050714; border-top: 1px solid #ffffff10; }
+  .eyebrow { color: #22d3ee; font: 10px monospace; letter-spacing: .2em; }
+  h2 { color: #eef2ff; font-size: clamp(32px, 4vw, 56px); line-height: 1.05; letter-spacing: -.05em; margin: 22px 0; }
+  h2 span { color: #22d3ee; }
+  .terminal-intro p { max-width: 360px; color: #9aa7c2; font-size: 14px; line-height: 1.8; }
+  portfolio-terminal { display: block; min-width: 0; background: #080d1c; border: 1px solid #283653; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 70px #0005; font: 13px/1.7 monospace; color: #bdc9e0; }
+  .terminal-bar { display: flex; align-items: center; gap: 14px; padding: 14px 20px; border-bottom: 1px solid #283653; font-size: 11px; }
+  .terminal-dots { display: flex; gap: 6px; }
+  .terminal-dots i { width: 7px; height: 7px; border-radius: 50%; background: #526df4; }
+  .terminal-dots i:last-child { background: #22d3ee; }
+  .terminal-status { margin-left: auto; color: #22d3ee; font-size: 9px; letter-spacing: .12em; }
+  .terminal-output { height: 248px; overflow-y: auto; overscroll-behavior: contain; padding: 20px; scrollbar-color: #334568 #080d1c; overflow-wrap: anywhere; }
+  .terminal-output :global(p) { margin: 0 0 8px; white-space: pre-wrap; }
+  .terminal-output :global(.terminal-entry) { margin: 18px 0; }
+  .terminal-output :global(.terminal-entry > p:first-child) { color: #22d3ee; }
+  .terminal-output :global(a), .fallback a { color: #c2cbff; text-underline-offset: 4px; }
+  .terminal-form { display: flex; align-items: center; gap: 10px; padding: 12px 20px; border-top: 1px solid #283653; }
+  label { color: #22d3ee; white-space: nowrap; }
+  input { width: 100%; min-width: 0; padding: 8px 4px; border: 0; background: transparent; color: #eef2ff; font: inherit; font-size: 16px; }
+  input::placeholder { color: #8794ad; }
+  button { cursor: pointer; font: inherit; color: #c2cbff; background: #111b30; border: 1px solid #344363; border-radius: 5px; min-height: 36px; }
+  button:hover { background: #20304d; border-color: #22d3ee; }
+  .terminal-form button { min-width: 40px; font-size: 20px; }
+  .terminal-shortcuts { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 20px; }
+  .terminal-shortcuts button { padding: 4px 10px; font-size: 11px; }
+  .terminal-hint, .fallback { font-size: 11px; color: #9aa7c2; padding: 0 20px; margin: 12px 0 16px; }
+  :is(input, button, .terminal-output):focus-visible { outline: 2px solid #22d3ee; outline-offset: -2px; }
+  .terminal-output :global(a:focus-visible) { outline: 2px solid #22d3ee; outline-offset: 3px; }
+  [hidden] { display: none !important; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  @media (max-width: 850px) { .terminal-section { grid-template-columns: 1fr; padding: 70px 25px; } }
+  @media (max-width: 500px) { .terminal-section { padding: 60px 20px; } .terminal-bar, .terminal-output, .terminal-form { padding-left: 12px; padding-right: 12px; } .terminal-shortcuts { padding: 0 12px; } .terminal-form { gap: 6px; } }
+</style>
