@@ -63,7 +63,10 @@ const technologies = [
       </p>
 
 
-      <GitHubLink project="ai-chatbot" />
+      <div class="project-actions" id="demo">
+        <a class="live-demo-link" href="https://wajeeh-chatbot.streamlit.app/" target="_blank" rel="noopener noreferrer">OPEN LIVE DEMO <span aria-hidden="true">↗</span></a>
+        <GitHubLink project="ai-chatbot" />
+      </div>
       <!-- SYSTEM -->
 
       <div class="system">
@@ -197,6 +200,10 @@ const technologies = [
 </html>
 
 <style>
+  .project-actions { --github-link-margin: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 28px; scroll-margin-top: 30px; }
+  .live-demo-link { display: inline-flex; align-items: center; justify-content: center; gap: 20px; min-height: 44px; padding: 13px 18px; box-sizing: border-box; background: #22d3ee; color: #050816; border: 1px solid #22d3ee; text-decoration: none; font: 11px monospace; letter-spacing: .1em; }
+  .live-demo-link:hover { background: #a5f3fc; }
+  .live-demo-link:focus-visible { outline: 2px solid white; outline-offset: 4px; }
 
   * {
     box-sizing: border-box;
