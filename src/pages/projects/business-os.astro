@@ -29,7 +29,7 @@ const capabilities = [
           <h1>BUSINESS<br /><span>OS.</span></h1>
           <p class="intro">A centralized digital workspace concept for connecting business workflows, operational data, and intelligent automation.</p>
           <div class="tags">{stack.map((item) => <span>{item}</span>)}</div>
-          <a class="primary-link" href="/#contact">DISCUSS A SIMILAR PROJECT <span>↗</span></a>
+          <a class="primary-link" href="/demos/business-os">OPEN LIVE DEMO <span>↗</span></a>
         </div>
         <div class="visual" aria-label="Abstract business workflow visualization">
           <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
@@ -60,7 +60,7 @@ const capabilities = [
             <div class="task-row"><div><span class="task-id">TASK-016</span><strong>Send project status update</strong></div><button class="task-toggle" type="button" aria-pressed="false">MARK DONE</button></div>
           </div>
         </div>
-        <div class="repo-actions"><GitHubLink project="business-os" /></div>
+        <div class="repo-actions"><a class="demo-button" href="/demos/business-os">OPEN FULL DASHBOARD DEMO ↗</a><GitHubLink project="business-os" /></div>
       </section>
       <script>
         const taskButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".task-toggle"));
