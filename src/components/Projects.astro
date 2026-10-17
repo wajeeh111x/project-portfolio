@@ -69,10 +69,10 @@ import GitHubLink from "./GitHubLink.astro";
         </div>
 
 
-        <GitHubLink project="ai-chatbot" />
         <div class="project-actions">
           <a href="/projects/ai-chatbot" class="project-link">VIEW PROJECT <span>↗</span></a>
           <a href="/projects/ai-chatbot#demo" class="project-link secondary-link">LIVE DEMO <span>↗</span></a>
+          <GitHubLink project="ai-chatbot" />
         </div>
 
       </div>
@@ -158,12 +158,13 @@ import GitHubLink from "./GitHubLink.astro";
         </div>
 
 
-        <GitHubLink project="business-os" />
-
+        <div class="project-actions">
         <a href="/projects/business-os" class="project-link">
           VIEW PROJECT
           <span>↗</span>
         </a>
+          <GitHubLink project="business-os" />
+        </div>
 
       </div>
 
@@ -215,12 +216,13 @@ import GitHubLink from "./GitHubLink.astro";
         </div>
 
 
-        <GitHubLink project="digital-experience" />
-
+        <div class="project-actions">
         <a href="/projects/digital-experience" class="project-link">
           VIEW PROJECT
           <span>↗</span>
         </a>
+          <GitHubLink project="digital-experience" />
+        </div>
 
       </div>
 
@@ -633,7 +635,15 @@ import GitHubLink from "./GitHubLink.astro";
      LINK
   ================================= */
 
-  .project-actions { display:flex; flex-wrap:wrap; align-items:center; gap:22px; }
+  .project-actions { --github-link-margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: auto; padding-top: 28px; }
+  .project-actions :global(.github-link) { flex-basis: fit-content; }
+  .project-card { display: flex; flex-direction: column; }
+  .project-content { display: flex; flex-direction: column; align-items: flex-start; flex: 1; width: 100%; }
+  .project-actions .project-link { margin-top: 0; min-height: 44px; }
+  @media (max-width: 400px) {
+    .project-actions { width: 100%; }
+    .project-actions :global(.github-link) { width: 100%; font-size: 10px; }
+  }
   .secondary-link { color:#22d3ee; }
 
   .project-link {

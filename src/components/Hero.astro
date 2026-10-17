@@ -54,7 +54,6 @@ import GitHubLink from "./GitHubLink.astro";
       digital experiences.
     </p>
 
-    <GitHubLink />
     <div class="hero-actions">
 
       <a href="#projects" class="primary-button">
@@ -65,6 +64,8 @@ import GitHubLink from "./GitHubLink.astro";
       <a href="#about" class="secondary-button">
         ABOUT ME
       </a>
+
+      <GitHubLink />
 
     </div>
 
@@ -702,6 +703,8 @@ import GitHubLink from "./GitHubLink.astro";
   ========================================== */
 
   .hero-actions {
+    --github-link-margin: 0;
+    flex-wrap: wrap;
 
     display:
       flex;
@@ -1668,12 +1671,7 @@ import GitHubLink from "./GitHubLink.astro";
 
     h1 {
 
-      font-size:
-        clamp(
-          55px,
-          16vw,
-          90px
-        );
+      font-size: clamp(36px, 12vw, 80px);
 
     }
 
@@ -1748,6 +1746,14 @@ import GitHubLink from "./GitHubLink.astro";
 
   }
 
+  .hero-actions { gap: 12px; }
+  .hero-actions > a, .hero-actions :global(.github-link) { height: 48px; box-sizing: border-box; }
+  .primary-button { border-radius: 4px; }
+  .secondary-button { display: inline-flex; align-items: center; padding: 12px 18px; border: 1px solid #ffffff26; border-radius: 4px; }
+  @media (max-width: 400px) {
+    .hero-actions { align-items: stretch; }
+    .hero-actions > a, .hero-actions :global(.github-link) { width: 100%; justify-content: center; }
+  }
 </style>
 
 

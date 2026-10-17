@@ -19,7 +19,7 @@ const { href, label } = project ? links[project] : { href: profile, label: 'GITH
 </a>
 
 <style>
-  .github-link { display: inline-flex; position: relative; z-index: 5; align-items: center; gap: 10px; max-width: 100%; margin-top: 24px; padding: 12px 15px; border: 1px solid #22d3ee66; border-radius: 4px; background: #22d3ee0d; color: #c8faff; font: 11px/1.5 monospace; letter-spacing: .04em; text-decoration: none; }
+  .github-link { display: inline-flex; position: relative; z-index: 5; align-items: center; gap: 10px; max-width: 100%; box-sizing: border-box; min-height: 44px; margin-top: var(--github-link-margin, 24px); padding: 12px 15px; border: 1px solid #22d3ee66; border-radius: 4px; background: #22d3ee0d; color: #c8faff; font: 11px/1.5 monospace; letter-spacing: .04em; text-decoration: none; }
   .github-link:hover { background: #22d3ee1a; border-color: #22d3ee; }
   .github-link:focus-visible { outline: 2px solid #22d3ee; outline-offset: 4px; }
   svg { flex-shrink: 0; }
