@@ -1,4 +1,5 @@
 ---
+import GitHubLink from "../../components/GitHubLink.astro";
 const stack = ["ASTRO", "THREE.JS", "WEBGL", "TYPESCRIPT", "CSS MOTION"];
 const principles = [
   { number: "01", title: "Immersive visuals", body: "Use depth, light, and restrained motion to make digital interfaces feel spatial." },
@@ -50,7 +51,7 @@ const principles = [
         <div class="demo-head"><h2>INTERACTIVE <span>SCENE.</span></h2><p>Use the controls to change the scene's motion and lighting. This is a lightweight browser demo, not a full production WebGL app.</p></div>
         <div class="scene-demo" id="sceneDemo"><div class="scene-grid"></div><div class="demo-orbit orbit-x"></div><div class="demo-orbit orbit-y"></div><div class="demo-sphere" id="demoSphere"></div><div class="scene-label">DIGITAL OBJECT / INTERACTIVE</div></div>
         <div class="scene-controls"><button type="button" id="motionToggle" aria-pressed="false">PAUSE MOTION</button><button type="button" id="lightToggle" aria-pressed="false">CHANGE LIGHTING</button></div>
-        <div class="repo-actions"><a class="demo-button" href="https://github.com/YOUR-GITHUB-USERNAME/digital-experience" target="_blank" rel="noreferrer">GITHUB REPOSITORY ↗</a><span>Replace the placeholder URL with your real repository.</span></div>
+        <div class="repo-actions"><GitHubLink project="digital-experience" /></div>
       </section>
       <script>
         const scene = document.querySelector<HTMLElement>("#sceneDemo");

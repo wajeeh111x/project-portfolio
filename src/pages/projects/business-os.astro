@@ -1,4 +1,5 @@
 ---
+import GitHubLink from "../../components/GitHubLink.astro";
 const stack = ["REACT", "NODE.JS", "REST API", "DATABASE", "AI AGENTS"];
 const capabilities = [
   { number: "01", title: "Workflow automation", body: "Map repetitive business tasks into clear, repeatable workflows." },
@@ -59,7 +60,7 @@ const capabilities = [
             <div class="task-row"><div><span class="task-id">TASK-016</span><strong>Send project status update</strong></div><button class="task-toggle" type="button" aria-pressed="false">MARK DONE</button></div>
           </div>
         </div>
-        <div class="repo-actions"><a class="demo-button" href="https://github.com/YOUR-GITHUB-USERNAME/business-os" target="_blank" rel="noreferrer">GITHUB REPOSITORY ↗</a><span>Replace the placeholder URL with your real repository.</span></div>
+        <div class="repo-actions"><GitHubLink project="business-os" /></div>
       </section>
       <script>
         const taskButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".task-toggle"));
